@@ -1,0 +1,52 @@
+{
+    "name": "bugloos/query-sorting-bundle",
+    "description": "The query sorting bundle allows you to sort data from QueryBuilder and the Database. you can sort multiple columns at the same time and also you can sort relation fields with two-level deep and without any join in your query builder.",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "version": "1.0.6",
+    "authors": [
+        {
+            "name": "Milad Ghofrani",
+            "email": "milad.ghofrani@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.4",
+        "doctrine/doctrine-bundle": "^2.2",
+        "doctrine/orm": "^2.8",
+        "symfony/http-kernel": "^4.4",
+        "psr/cache": "^1.0",
+        "symfony/orm-pack": "^2.1",
+        "symfony/framework-bundle": "^4.4"
+    },
+    "require-dev": {
+        "ext-json": "*",
+        "friendsofphp/php-cs-fixer": "^2.18",
+        "matthiasnoback/symfony-dependency-injection-test": "^4.1",
+        "phpunit/phpunit": "^9.5",
+        "roave/security-advisories": "dev-latest",
+        "symfony/browser-kit": "^5.4",
+        "symfony/http-client": "^5.4",
+        "zenstruck/foundry": "^1.16",
+        "squizlabs/php_codesniffer": "3.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Bugloos\\QuerySortingBundle\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Bugloos\\QuerySortingBundle\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "discard-changes": true,
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    }
+}

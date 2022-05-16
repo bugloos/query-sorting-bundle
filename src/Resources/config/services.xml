@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services
+        http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="bugloos_query_sorting.query_sorting" class="Bugloos\QuerySortingBundle\Service\QuerySorting" public="true">
+            <argument type="service" id="doctrine.orm.default_entity_manager" /> <!-- filled in via a compiler pass -->
+            <argument type="service" id="cache.app" /> <!-- filled in via a compiler pass -->
+            <argument type="service" id="bugloos_query_sorting.query_sorting_handler_factory.sorting_factory" /> <!-- filled in via a compiler pass -->
+        </service>
+
+        <service id="bugloos_query_sorting.query_sorting_handler_factory.sorting_factory" class="Bugloos\QuerySortingBundle\SortingHandler\Factory\SortingFactory">
+            <argument type="service" id="doctrine.orm.default_entity_manager" />
+        </service>
+
+        <service id="Bugloos\QuerySortingBundle\Service\QuerySorting" alias="bugloos_query_sorting.query_sorting" public="false" />
+    </services>
+</container>

@@ -1,0 +1,19 @@
+services:
+
+    request:
+        synthetic: true
+
+    app.synthetic_service:
+        synthetic: true
+
+    Bugloos\QuerySortingBundle\Tests\Fixtures\Repository\:
+        resource: '../../../tests/Fixtures/Repository'
+        autowire: true
+        tags: [ 'doctrine.repository_service' ]
+
+    Bugloos\QuerySortingBundle\Tests\Fixtures\Controller\ExampleController:
+        public: true
+        arguments:
+            $entityManager: '@doctrine.orm.default_entity_manager'
+            $querySorting: '@bugloos_query_sorting.query_sorting'
+        tags: [ 'controller.service_arguments' ]
