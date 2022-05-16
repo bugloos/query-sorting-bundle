@@ -5,7 +5,6 @@
     "license": "MIT",
     "minimum-stability": "dev",
     "prefer-stable": true,
-    "version": "1.0.6",
     "authors": [
         {
             "name": "Milad Ghofrani",
@@ -40,13 +39,6 @@
     "autoload-dev": {
         "psr-4": {
             "Bugloos\\QuerySortingBundle\\Tests\\": "tests/"
-        }
-    },
-    "config": {
-        "sort-packages": true,
-        "discard-changes": true,
-        "allow-plugins": {
-            "dealerdirect/phpcodesniffer-composer-installer": true
         }
     }
 }

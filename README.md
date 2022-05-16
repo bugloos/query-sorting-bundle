@@ -1,5 +1,7 @@
 <h2>Query Sorting Bundle</h2>
 
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/bugloos/query-sorting-bundle/test)](https://github.com/bugloos/query-sorting-bundle/actions)
+
 <h2>What does it do? :)</h2>
 The query sorting bundle allows you to sort data from QueryBuilder and the Database. you can sort multiple columns at the same time and also you can sort relation fields with two-level deep and without any join in your query builder.
 
