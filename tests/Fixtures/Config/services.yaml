@@ -13,6 +13,9 @@ services:
 
     Bugloos\QuerySortingBundle\Tests\Fixtures\Controller\ExampleController:
         public: true
+        calls:
+            - method: setContainer
+              arguments: [ '@service_container' ]
         arguments:
             $entityManager: '@doctrine.orm.default_entity_manager'
             $querySorting: '@bugloos_query_sorting.query_sorting'
