@@ -6,3 +6,4 @@ composer.lock
 /coverage/
 /.idea/
 .phpunit.result.cache
+.php-cs-fixer.cache

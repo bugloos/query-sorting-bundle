@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Bugloos\QuerySortingBundle;
 
 use Bugloos\QuerySortingBundle\DependencyInjection\QuerySortingExtension;
+use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
@@ -12,7 +13,12 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  */
 class QuerySortingBundle extends Bundle
 {
-    public function getContainerExtension()
+    /**
+     * @return ExtensionInterface|QuerySortingExtension
+     *
+     * @author Milad Ghofrani <milad.g@bugloos.com>
+     */
+    public function getContainerExtension(): QuerySortingExtension|ExtensionInterface
     {
         if (null === $this->extension) {
             $this->extension = new QuerySortingExtension();
