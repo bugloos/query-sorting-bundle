@@ -18,7 +18,7 @@ class QuerySortingBundle extends Bundle
      *
      * @author Milad Ghofrani <milad.g@bugloos.com>
      */
-    public function getContainerExtension(): QuerySortingExtension|ExtensionInterface
+    public function getContainerExtension()
     {
         if (null === $this->extension) {
             $this->extension = new QuerySortingExtension();
