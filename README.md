@@ -1,6 +1,8 @@
 <h2>Query Sorting Bundle</h2>
 
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/bugloos/query-sorting-bundle/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/bugloos/query-sorting-bundle/?branch=main)
 [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/bugloos/query-sorting-bundle/test)](https://github.com/bugloos/query-sorting-bundle/actions)
+[![Code Intelligence Status](https://scrutinizer-ci.com/g/bugloos/query-sorting-bundle/badges/code-intelligence.svg?b=main)](https://scrutinizer-ci.com/code-intelligence)
 
 <h2>What does it do? :)</h2>
 The query sorting bundle allows you to sort data from QueryBuilder and the Database. you can sort multiple columns at the same time and also you can sort relation fields with two-level deep and without any join in your query builder.
