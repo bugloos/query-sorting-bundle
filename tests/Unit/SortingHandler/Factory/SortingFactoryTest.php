@@ -61,7 +61,39 @@ class SortingFactoryTest extends TestCase
         self::assertInstanceOf(TwoLevelRelationHandler::class, $relationHandler);
     }
 
-    public function test_relation_handler_with_an_exception_when_need_relation_more_than_two_level(): void
+    public function test_relation_handler_with_three_level_relation(): void
+    {
+        $entityManager = $this
+            ->getMockBuilder('Doctrine\ORM\EntityManager')
+            ->setMethods(['getRepository'])
+            ->disableOriginalConstructor()
+            ->getMock()
+        ;
+
+        $sortingFactory = new SortingFactory($entityManager);
+
+        $relationHandler = $sortingFactory->createSortingHandler(['bookUsers', 'user', 'age', 'fake']);
+
+        self::assertInstanceOf(TwoLevelRelationHandler::class, $relationHandler);
+    }
+
+    public function test_relation_handler_with_four_level_relation(): void
+    {
+        $entityManager = $this
+            ->getMockBuilder('Doctrine\ORM\EntityManager')
+            ->setMethods(['getRepository'])
+            ->disableOriginalConstructor()
+            ->getMock()
+        ;
+
+        $sortingFactory = new SortingFactory($entityManager);
+
+        $relationHandler = $sortingFactory->createSortingHandler(['bookUsers', 'user', 'age', 'fake', 'fake']);
+
+        self::assertInstanceOf(TwoLevelRelationHandler::class, $relationHandler);
+    }
+
+    public function test_relation_handler_with_an_exception_when_need_relation_more_than_four_level(): void
     {
         $entityManager = $this
             ->getMockBuilder('Doctrine\ORM\EntityManager')
@@ -74,6 +106,6 @@ class SortingFactoryTest extends TestCase
 
         $this->expectException(\RuntimeException::class);
 
-        $sortingFactory->createSortingHandler(['bookUsers', 'user', 'country', 'name']);
+        $sortingFactory->createSortingHandler(['bookUsers', 'user', 'country', 'name', 'fake', 'fake']);
     }
 }
