@@ -15,7 +15,7 @@ composer require bugloos/query-sorting-bundle
 
 <h2>Compatibility</h2>
 
-* PHP v7.4 or above
+* PHP v8.1 or above
 * Symfony v4.4 or above
 
 <h2>Usage</h2>
