@@ -3,8 +3,10 @@
 namespace Bugloos\QuerySortingBundle\Tests\Unit\SortingHandler\Factory;
 
 use Bugloos\QuerySortingBundle\SortingHandler\Factory\SortingFactory;
+use Bugloos\QuerySortingBundle\SortingHandler\FourLevelRelationHandler;
 use Bugloos\QuerySortingBundle\SortingHandler\NoRelationHandler;
 use Bugloos\QuerySortingBundle\SortingHandler\OneLevelRelationHandler;
+use Bugloos\QuerySortingBundle\SortingHandler\ThreeLevelRelationHandler;
 use Bugloos\QuerySortingBundle\SortingHandler\TwoLevelRelationHandler;
 use PHPUnit\Framework\TestCase;
 
@@ -74,7 +76,7 @@ class SortingFactoryTest extends TestCase
 
         $relationHandler = $sortingFactory->createSortingHandler(['bookUsers', 'user', 'age', 'fake']);
 
-        self::assertInstanceOf(TwoLevelRelationHandler::class, $relationHandler);
+        self::assertInstanceOf(ThreeLevelRelationHandler::class, $relationHandler);
     }
 
     public function test_relation_handler_with_four_level_relation(): void
@@ -90,7 +92,7 @@ class SortingFactoryTest extends TestCase
 
         $relationHandler = $sortingFactory->createSortingHandler(['bookUsers', 'user', 'age', 'fake', 'fake']);
 
-        self::assertInstanceOf(TwoLevelRelationHandler::class, $relationHandler);
+        self::assertInstanceOf(FourLevelRelationHandler::class, $relationHandler);
     }
 
     public function test_relation_handler_with_an_exception_when_need_relation_more_than_four_level(): void
