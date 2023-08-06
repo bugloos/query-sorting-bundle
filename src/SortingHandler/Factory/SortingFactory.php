@@ -14,14 +14,17 @@ use Doctrine\ORM\EntityManagerInterface;
 
 /**
  * @author Milad Ghofrani <milad.ghofrani@gmail.com>
+ * @contributor Amin Khoshzahmat <aminkhoshzahmat@gmail.com>
  */
 class SortingFactory
 {
-    private const NO_RELATION = 1;
-    private const ONE_LEVEL_RELATION = 2;
-    private const TWO_LEVEL_RELATION = 3;
-    private const THREE_LEVEL_RELATION = 4;
-    private const FOUR_LEVEL_RELATION = 5;
+    private const HANDLER_MAP = [
+        1 => NoRelationHandler::class,
+        2 => OneLevelRelationHandler::class,
+        3 => TwoLevelRelationHandler::class,
+        4 => ThreeLevelRelationHandler::class,
+        5 => FourLevelRelationHandler::class,
+    ];
 
     protected EntityManagerInterface $entityManager;
 
@@ -32,26 +35,15 @@ class SortingFactory
 
     public function createSortingHandler(array $relationsAndFieldName): AbstractSortingHandler
     {
-        switch (\count($relationsAndFieldName)) {
-            case self::NO_RELATION:
-                return new NoRelationHandler($this->entityManager);
+        $count = \count($relationsAndFieldName);
 
-            case self::ONE_LEVEL_RELATION:
-                return new OneLevelRelationHandler($this->entityManager);
-
-            case self::TWO_LEVEL_RELATION:
-                return new TwoLevelRelationHandler($this->entityManager);
-
-            case self::THREE_LEVEL_RELATION:
-                return new ThreeLevelRelationHandler($this->entityManager);
-
-            case self::FOUR_LEVEL_RELATION:
-                return new FourLevelRelationHandler($this->entityManager);
-
-            default:
-                throw new \RuntimeException(
-                    'This Bundle just support maximum two level relation'
-                );
+        if (!isset(self::HANDLER_MAP[$count])) {
+            throw new \RuntimeException(
+                sprintf('Unsupported relation level: %d. This Bundle supports up to a maximum of four level relations.', $count)
+            );
         }
+
+        $handlerClass = self::HANDLER_MAP[$count];
+        return new $handlerClass($this->entityManager);
     }
 }
